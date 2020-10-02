@@ -31,7 +31,7 @@ task rancherDeploy() {
   sleep(20 * 1000)
   exec { commandLine 'docker', 'rm', 'mediawiki' } 
   exec { commandLine 'docker', 'create', "--name=mediawiki", "-e", "dchinchure/thoughtworks-mediawiki:$buildNumber-0", "-e", "CATTLE_ACCESS_KEY=token-nts9v", "-e", "CATTLE_SECRET_KEY=qp7hz5vjptjksdrd9zwq4mctcfpgjw8g6qs9tfgnwnrptg9rbxwvx5", "-e", "RANCHER_URL=https://192.168.10.123", "-v", "$projectDir/devops:/app/definitions", "dchinchure/deployme"}
-  exec { commandLine 'docker', 'cp', "$projectDir/devops/workload.json","kristaclient:/app/definitions/workload.json" }
+  exec { commandLine 'docker', 'cp', "$projectDir/devops/workload.json","mediawiki:/app/definitions/workload.json" }
   exec { commandLine 'docker', 'start', 'mediawiki' }
   } 
 }
