@@ -1,0 +1,151 @@
+{
+   "annotations":{
+      "cattle.io/timestamp":"2020-10-02T17:08:20Z"
+   },
+   "containers":[
+      {
+         "allowPrivilegeEscalation":false,
+         "image":"dchinchure/mediawiki:2.0",
+         "imagePullPolicy":"Always",
+         "initContainer":false,
+         "name":"test",
+         "ports":[
+            {
+               "containerPort":80,
+               "dnsName":"test-hostport",
+               "hostPort":8888,
+               "kind":"HostPort",
+               "name":"sa",
+               "protocol":"TCP",
+               "sourcePort":8888,
+               "type":"/v3/project/schemas/containerPort"
+            }
+         ],
+         "privileged":false,
+         "readOnly":false,
+         "resources":{
+            "type":"/v3/project/schemas/resourceRequirements"
+         },
+         "restartCount":0,
+         "runAsNonRoot":false,
+         "stdin":true,
+         "stdinOnce":false,
+         "terminationMessagePath":"/dev/termination-log",
+         "terminationMessagePolicy":"File",
+         "tty":true,
+         "type":"/v3/project/schemas/container"
+      }
+   ],
+   "created":"2020-10-02T16:58:31Z",
+   "creatorId":null,
+   "deploymentConfig":{
+      "maxSurge":1,
+      "maxUnavailable":0,
+      "minReadySeconds":0,
+      "progressDeadlineSeconds":600,
+      "revisionHistoryLimit":10,
+      "strategy":"RollingUpdate"
+   },
+   "deploymentStatus":{
+      "availableReplicas":1,
+      "conditions":[
+         {
+            "lastTransitionTime":"2020-10-02T17:00:00Z",
+            "lastTransitionTimeTS":1601658000000,
+            "lastUpdateTime":"2020-10-02T17:00:00Z",
+            "lastUpdateTimeTS":1601658000000,
+            "message":"Deployment has minimum availability.",
+            "reason":"MinimumReplicasAvailable",
+            "status":"True",
+            "type":"Available"
+         },
+         {
+            "lastTransitionTime":"2020-10-02T16:58:31Z",
+            "lastTransitionTimeTS":1601657911000,
+            "lastUpdateTime":"2020-10-02T17:08:25Z",
+            "lastUpdateTimeTS":1601658505000,
+            "message":"ReplicaSet \"test-6589dbf4df\" has successfully progressed.",
+            "reason":"NewReplicaSetAvailable",
+            "status":"True",
+            "type":"Progressing"
+         }
+      ],
+      "observedGeneration":11,
+      "readyReplicas":1,
+      "replicas":1,
+      "type":"/v3/project/schemas/deploymentStatus",
+      "unavailableReplicas":0,
+      "updatedReplicas":1
+   },
+   "dnsConfig":null,
+   "dnsPolicy":"ClusterFirst",
+   "ephemeralContainers":[
+      
+   ],
+   "gids":[
+      
+   ],
+   "hostAliases":[
+      
+   ],
+   "hostIPC":false,
+   "hostNetwork":false,
+   "hostPID":false,
+   "imagePullSecrets":[
+      
+   ],
+   "labels":{
+      "workload.user.cattle.io/workloadselector":"deployment-cicd-test"
+   },
+   "name":"test",
+   "namespaceId":"cicd",
+   "nodeId":"",
+   "ownerReferences":[
+      
+   ],
+   "paused":false,
+   "projectId":"c-thgb5:p-ncbhc",
+   "publicEndpoints":[
+      
+   ],
+   "readinessGates":[
+      
+   ],
+   "restartPolicy":"Always",
+   "scale":1,
+   "scheduling":{
+      "scheduler":"default-scheduler"
+   },
+   "selector":{
+      "matchLabels":{
+         "workload.user.cattle.io/workloadselector":"deployment-cicd-test"
+      },
+      "type":"/v3/project/schemas/labelSelector"
+   },
+   "state":"active",
+   "sysctls":[
+      
+   ],
+   "terminationGracePeriodSeconds":30,
+   "topologySpreadConstraints":[
+      
+   ],
+   "transitioning":"no",
+   "transitioningMessage":"",
+   "uuid":"04afc1f9-b8b0-4dc9-831d-c79ddfaec093",
+   "volumes":[
+      
+   ],
+   "windowsOptions":null,
+   "workloadAnnotations":{
+      "deployment.kubernetes.io/revision":"8",
+      "field.cattle.io/creatorId":"u-cvlg5"
+   },
+   "workloadLabels":{
+      "cattle.io/creator":"norman",
+      "workload.user.cattle.io/workloadselector":"deployment-cicd-test"
+   },
+   "workloadMetrics":[
+      
+   ]
+}
