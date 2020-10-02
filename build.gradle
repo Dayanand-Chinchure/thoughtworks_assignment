@@ -1,4 +1,3 @@
-def name = "2.0"
 String buildNumber = System.getenv("BUILD_NUMBER")
 
 task buildOnLocalDocker(type: Exec) {
