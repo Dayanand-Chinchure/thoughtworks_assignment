@@ -6,7 +6,7 @@ task buildOnLocalDocker(type: Exec) {
     logger.lifecycle("machine, maybe 2 or 3 if it's been built before and has some caching")
     logger.lifecycle("Time is now " + "date".execute().text)
   }
-  commandLine 'docker', 'build', "-t", "dchinchure/thoughtworks-mediawiki:$buildNumber-0","."
+  commandLine 'docker', 'build', "-t", "dchinchure/thoughtworks-mediawiki:$buildNumber.0","."
 
   doLast {
     logger.lifecycle("\n\n=================Finished at " + "date".execute().text)
@@ -19,7 +19,7 @@ task image() {
 
 task publishToArtifactory(type: Exec) {
   dependsOn buildOnLocalDocker
-  commandLine 'docker', 'push', "dchinchure/thoughtworks-mediawiki:$buildNumber-0"
+  commandLine 'docker', 'push', "dchinchure/thoughtworks-mediawiki:$buildNumber.0"
   }
 
 task rancherDeploy() {
@@ -30,7 +30,7 @@ task rancherDeploy() {
   doLast{
   sleep(20 * 1000)
   exec { commandLine 'docker', 'rm', 'mediawiki' } 
-  exec { commandLine 'docker', 'create', "--name=mediawiki", "-e", "dchinchure/thoughtworks-mediawiki:$buildNumber-0", "-e", "CATTLE_ACCESS_KEY=token-nts9v", "-e", "CATTLE_SECRET_KEY=qp7hz5vjptjksdrd9zwq4mctcfpgjw8g6qs9tfgnwnrptg9rbxwvx5", "-e", "RANCHER_URL=https://192.168.10.123", "-v", "$projectDir/devops:/app/definitions", "dchinchure/deployme"}
+  exec { commandLine 'docker', 'create', "--name=mediawiki", "-e", "dchinchure/thoughtworks-mediawiki:$buildNumber.0", "-e", "CATTLE_ACCESS_KEY=token-nts9v", "-e", "CATTLE_SECRET_KEY=qp7hz5vjptjksdrd9zwq4mctcfpgjw8g6qs9tfgnwnrptg9rbxwvx5", "-e", "RANCHER_URL=https://192.168.10.123", "-v", "$projectDir/devops:/app/definitions", "dchinchure/deployme"}
   exec { commandLine 'docker', 'cp', "$projectDir/devops/workload.json","mediawiki:/app/definitions/workload.json" }
   exec { commandLine 'docker', 'start', 'mediawiki' }
   } 
